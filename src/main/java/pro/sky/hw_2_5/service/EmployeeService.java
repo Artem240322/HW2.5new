@@ -2,6 +2,7 @@ package pro.sky.hw_2_5.service;
 
 
 import org.springframework.stereotype.Service;
+import pro.sky.hw_2_5.exceptions.EmployeeNotFoundException;
 import pro.sky.hw_2_5.model.Employee;
 
 import java.util.Objects;
@@ -26,9 +27,10 @@ public class EmployeeService {
         for (int i = 0; i < employees.length; i++) {
             if (Objects.equals(employees[i], employee)) {
                 employees[i] = null;
+                return employee;
             }
         }
-        return employee;
+        throw new EmployeeNotFoundException();
 
     }
     public Employee find(String name, String surname){
@@ -38,7 +40,7 @@ public class EmployeeService {
                 return employee;
             }
         }
-        return null;
+        throw new EmployeeNotFoundException();
     }
 }
 
