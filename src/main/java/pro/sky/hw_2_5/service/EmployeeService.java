@@ -7,27 +7,29 @@ import pro.sky.hw_2_5.exception.EmployeeNotFoundException;
 import pro.sky.hw_2_5.exception.EmployeeStoragelsFullException;
 import pro.sky.hw_2_5.model.Employee;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Service
 public class EmployeeService {
 
-    private final Employee[] employees = new Employee[10];
+    private final List<Employee> employees = new ArrayList<>();
 
     public Employee add(String name, String surname) {
         Employee employee = new Employee(name, surname);
         int index = -1;
-        for (int i = 0; i < employees.length; i++) {
-            if (Objects.equals(employees[i], employee)) {
+        for (int i = 0; i < employees.size(); i++) {
+            if (Objects.equals(employees.get(i), employee)) {
                 throw new EmployeeAlreadyAddedException();
             }
-            if (Objects.isNull(employees[i])) {
+            if (Objects.isNull(employees.get(i))) {
                 index = i;
                 break;
             }
         }
         if (index != -1) {
-            employees[index] = employee;
+            employees.set(index, employee);
         } else {
             throw new EmployeeStoragelsFullException();
         }
@@ -35,9 +37,9 @@ public class EmployeeService {
     }
     public Employee remove(String name, String surname) {
         Employee employee = new Employee(name, surname);
-        for (int i = 0; i < employees.length; i++) {
-            if (Objects.equals(employees[i], employee)) {
-                employees[i] = null;
+        for (int i = 0; i < employees.size(); i++) {
+            if (Objects.equals(employees.get(i), employee)) {
+                employees.remove(i);
                 return employee;
             }
         }
