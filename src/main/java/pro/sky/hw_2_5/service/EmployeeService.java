@@ -3,6 +3,7 @@ package pro.sky.hw_2_5.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.hw_2_5.exceptions.EmployeeNotFoundException;
+import pro.sky.hw_2_5.exceptions.EmployeeStoragelsFullException;
 import pro.sky.hw_2_5.model.Employee;
 
 import java.util.Objects;
@@ -14,11 +15,17 @@ public class EmployeeService {
 
     public Employee add(String name, String surname) {
         Employee employee = new Employee(name, surname);
+        int index = -1;
         for (int i = 0; i < employees.length; i++) {
             if (Objects.isNull(employees[i])) {
-                employees[i] = employee;
+                index = i;
                 break;
             }
+        }
+        if (index != -1) {
+            employees[index] = employee;
+        } else {
+            throw new EmployeeStoragelsFullException();
         }
         return employee;
     }
