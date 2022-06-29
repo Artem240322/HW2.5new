@@ -23,7 +23,7 @@ public class EmployeeService {
     }
     public Employee remove(String name, String surname) {
         Employee employee = new Employee(name, surname);
-        for (int i = 0; i = employees.length; i++) {
+        for (int i = 0; i < employees.length; i++) {
             if (Objects.equals(employees[i], employee)) {
                 employees[i] = null;
             }
