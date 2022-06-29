@@ -2,6 +2,7 @@ package pro.sky.hw_2_5.service;
 
 
 import org.springframework.stereotype.Service;
+import pro.sky.hw_2_5.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.hw_2_5.exceptions.EmployeeNotFoundException;
 import pro.sky.hw_2_5.exceptions.EmployeeStoragelsFullException;
 import pro.sky.hw_2_5.model.Employee;
@@ -17,6 +18,9 @@ public class EmployeeService {
         Employee employee = new Employee(name, surname);
         int index = -1;
         for (int i = 0; i < employees.length; i++) {
+            if (Objects.equals(employees[i], employee)) {
+                throw new EmployeeAlreadyAddedException();
+            }
             if (Objects.isNull(employees[i])) {
                 index = i;
                 break;
