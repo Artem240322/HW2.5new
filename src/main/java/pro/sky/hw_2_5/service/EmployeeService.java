@@ -49,9 +49,7 @@ public class EmployeeService {
     }
 
     public List<Employee> getAll() {
-        List<Employee> result = new ArrayList<>(employees.size());
-        Collections.copy(employees, result);
-        return result;
+        return new ArrayList<>(employees);
     }
 }
 
