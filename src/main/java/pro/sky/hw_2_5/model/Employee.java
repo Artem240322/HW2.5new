@@ -1,11 +1,15 @@
 package pro.sky.hw_2_5.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Employee {
 
+    @JsonProperty("firstName")
     private final String name;
 
+    @JsonProperty("lastName")
     private final String surname;
 
     public Employee(String name, String surname) {

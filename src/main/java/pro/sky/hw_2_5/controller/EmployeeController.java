@@ -23,5 +23,17 @@ public class EmployeeController {
                         @RequestParam("lastName") String surname) {
         return employeeService.add(name, surname);
     }
+    @GetMapping("/remove")
+    public Employee remove (@RequestParam("firstName") String name,
+                            @RequestParam("lastName") String surname) {
+        return employeeService.remove(name, surname);
+
+    }
+
+    @GetMapping("/find")
+    public Employee find(@RequestParam("firstName") String name,
+                         @RequestParam("lastName") String surname) {
+        return employeeService.find(name, surname);
+    }
 
 }
