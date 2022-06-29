@@ -2,9 +2,9 @@ package pro.sky.hw_2_5.service;
 
 
 import org.springframework.stereotype.Service;
-import pro.sky.hw_2_5.exceptions.EmployeeAlreadyAddedException;
-import pro.sky.hw_2_5.exceptions.EmployeeNotFoundException;
-import pro.sky.hw_2_5.exceptions.EmployeeStoragelsFullException;
+import pro.sky.hw_2_5.exception.EmployeeAlreadyAddedException;
+import pro.sky.hw_2_5.exception.EmployeeNotFoundException;
+import pro.sky.hw_2_5.exception.EmployeeStoragelsFullException;
 import pro.sky.hw_2_5.model.Employee;
 
 import java.util.Objects;
