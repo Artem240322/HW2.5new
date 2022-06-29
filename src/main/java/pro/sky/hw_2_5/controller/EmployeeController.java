@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.hw_2_5.model.Employee;
 import pro.sky.hw_2_5.service.EmployeeService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/emploee")
 public class EmployeeController {
@@ -22,6 +24,23 @@ public class EmployeeController {
     public Employee add(@RequestParam("firstName") String name,
                         @RequestParam("lastName") String surname) {
         return employeeService.add(name, surname);
+    }
+    @GetMapping("/remove")
+    public Employee remove (@RequestParam("firstName") String name,
+                            @RequestParam("lastName") String surname) {
+        return employeeService.remove(name, surname);
+
+    }
+
+    @GetMapping("/find")
+    public Employee find(@RequestParam("firstName") String name,
+                         @RequestParam("lastName") String surname) {
+        return employeeService.find(name, surname);
+    }
+
+    @GetMapping
+    public List<Employee> getAll() {
+        return employeeService.getAll();
     }
 
 }
