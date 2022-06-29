@@ -8,6 +8,7 @@ import pro.sky.hw_2_5.exception.EmployeeStoragelsFullException;
 import pro.sky.hw_2_5.model.Employee;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,6 +55,12 @@ public class EmployeeService {
             }
         }
         throw new EmployeeNotFoundException();
+    }
+
+    public List<Employee> getEmployees() {
+        List<Employee> result = new ArrayList<>(employees.size());
+        Collections.copy(employees, result);
+        return result;
     }
 }
 
